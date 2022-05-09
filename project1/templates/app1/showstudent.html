@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>SHOW STDENTS</title>
+{% endblock %}
+
+
+{% block content %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">STUDENT ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">MARKS</th>
+      <th scope="col">DEPARTMENT</th>
+        <th scope="col">ADDRESS</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in obj %}
+    <tr>
+        <td>{{i.sid}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.marks}}</td>
+        <td>{{i.sdept}}</td>
+        <td>{{i.address}}</td>
+        <td><button class="btn btn-warning"><a href="{% url 'updatestu_url' i.sid %}">UPDATE</a></button></td>
+        <td><button class="btn btn-danger"><a href="{% url 'deletestu_url' i.sid %}">DELETE</a></button></td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}
